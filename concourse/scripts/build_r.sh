@@ -136,11 +136,11 @@ popd
 # given the fact R_HOME is set
 
 if [ "$OSVER" == "ubuntu18" ]; then
-    sed -i 's/\/usr\/lib64\/R\/lib\/R/${R_HOME}/g' /usr/lib64/R/bin/R
-    sed -i 's/\/usr\/lib64\/R\/lib\/R/${R_HOME}/g' /usr/lib64/R/lib/R/bin/R
+    sed -i 's|/usr/lib64/R/lib/R|${R_HOME}|g' /usr/lib64/R/bin/R
+    sed -i 's|/usr/lib64/R/lib/R|${R_HOME}|g' /usr/lib64/R/lib/R/bin/R
 else
-    sed -i 's/\/usr\/lib64\/R\/lib64\/R/${R_HOME}/g' /usr/lib64/R/bin/R
-    sed -i 's/\/usr\/lib64\/R\/lib64\/R/${R_HOME}/g' /usr/lib64/R/lib64/R/bin/R
+    sed -i 's|/usr/lib64/R/lib64/R|${R_HOME}|g' /usr/lib64/R/bin/R
+    sed -i 's|/usr/lib64/R/lib64/R|${R_HOME}|g' /usr/lib64/R/lib64/R/bin/R
 fi
 
 mkdir /usr/lib64/R/lib64/R/extlib
