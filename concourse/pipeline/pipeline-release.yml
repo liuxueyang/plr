@@ -37,8 +37,8 @@ resources:
 - name: ubuntu18-image
   type: docker-image
   source:
-    repository: pivotaldata/ubuntu-gpdb-dev
-    tag: '16.04'
+    repository: pivotaldata/gpdb6-ubuntu18.04-test
+    tag: latest
 
 # Github Source Codes
 
@@ -108,7 +108,7 @@ resources:
   source:
     json_key: {{concourse-gcs-resources-service-account-key}}
     bucket: {{gcs-bucket-intermediates}}
-    regexp: plr/published/gpdb6/plr-ubuntu18.gppkg
+    versioned_file: plr/published/gpdb6/plr-ubuntu18.gppkg
 
 - name: plr_gpdb_ubuntu18_release
   type: gcs
@@ -118,13 +118,11 @@ resources:
     regexp: plr/released/gpdb6/plr-(.*)-ubuntu18-amd64.gppkg
 
 - name: bin_gpdb_ubuntu18
-  type: s3
+  type: gcs
   source:
-    access_key_id: {{bucket-access-key-id}}
-    bucket: {{bucket-name}}
-    region_name: {{aws-region}}
-    secret_access_key: {{bucket-secret-access-key}}
-    versioned_file: build/gpdb_6x/bin_gpdb_ubuntu16/bin_gpdb.tar.gz
+    bucket: ((gcs-bucket-intermediates))
+    json_key: ((concourse-gcs-resources-service-account-key))
+    versioned_file: 6X_STABLE/bin_gpdb_ubuntu18.04/bin_gpdb.tar.gz
 
 ## ======================================================================
 ## jobs
