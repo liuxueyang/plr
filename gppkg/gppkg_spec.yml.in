@@ -10,8 +10,4 @@ PostInstall:
           echo 'PL/R installation is complete! To proceed, create PL/R language in the ';
           echo 'target database with: ';
           echo '    \"CREATE EXTENSION plr;\"';
-          echo '--------------------------------------------------------------------------';
-          echo '           DEPRECATED                                          ';
-          echo 'In an old way, you can enable PL/R helper functions by running ';
-          echo '    \"psql -f $GPHOME/share/postgresql/extension/plr.sql -d mydatabase\"';
           echo '==========================================================================';"
