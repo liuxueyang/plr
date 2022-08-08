@@ -22,7 +22,6 @@ PG_CPPFLAGS	+= $(r_includespec)
 SRCS		+= plr.c pg_conversion.c pg_backend_support.c pg_userfuncs.c pg_rsupport.c
 OBJS		:= $(SRCS:.c=.o)
 SHLIB_LINK	+= -L$(r_libdir1x) -L$(r_libdir2x) -lR
-DATA_built	= plr.sql
 DATA		= plr--8.3.0.16.sql plr--unpackaged--8.3.0.16.sql
 DOCS		= README.plr
 REGRESS		= plr bad_fun
